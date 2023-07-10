@@ -33,7 +33,7 @@ szemszin_valasztobox = ttk.Combobox(szemszin_keret, values=["Barna", "Zöld", "K
 szemszin_valasztobox.pack(fill='x', padx=5, pady=5)
 #keret
 osszesito_keret = tkinter.LabelFrame(ablak, text="Adatok összesítése")
-osszesito_keret.pack()
+osszesito_keret.pack(fill='x', padx=10, pady=10)
 osszesito_mezo = tkinter.Label(osszesito_keret, text="", anchor='w', height=8, justify='left')
 osszesito_mezo.pack(fill='x', padx=5, pady=5)
 
