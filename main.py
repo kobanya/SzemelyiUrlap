@@ -36,6 +36,7 @@ def adatok_mentese():
     testmagassag_valtozo.set(False)  # Alapértelmezett beállítása
     testsuly_valtozo.set(False)  # Alapértelmezett beállítása
     osszesito_mezo["text"] = ""  # Alaphelyzetbe állítás
+    beolvasas()
 def beolvasas():
     tree.delete(*tree.get_children())  # Korábbi adatok törlése
 
