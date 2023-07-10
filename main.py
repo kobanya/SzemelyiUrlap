@@ -1,4 +1,5 @@
 import tkinter
+import tkinter as tk
 from tkinter import ttk
 import csv
 
@@ -25,13 +26,20 @@ def adatok_mentese():
         writer = csv.writer(csvfile)
         writer.writerow(adatok)
 
-        nev_bevitel.delete(0, tkinter.END)  # Mező törlése
+        nev_bevitel.delete(0, tk.END)  # Mező törlése
         nem_valtozo.set("Férfi")   # Alapértelmezett beállítása
         szemszin_valasztobox.set("")  # Alapértelmezett beállítása
         testmagassag_valtozo.set(False)  # Alapértelmezett beállítása
         testsuly_valtozo.set(False)  # Alapértelmezett beállítása
         osszesito_mezo["text"] = ""  # Alaphelyzetbe állítás
 
+def beolvasas():
+    tree.delete(*tree.get_children())  # Korábbi adatok törlése
+
+    with open('adatlap.csv', 'r', newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            tree.insert('', 'end', values=row)
 
 ablak = tkinter.Tk()
 ablak.title("Adatbeviteli Űrlap")
@@ -77,14 +85,40 @@ osszesito_keret.pack(fill='x', padx=10, pady=10)
 osszesito_mezo = tkinter.Label(osszesito_keret, text="", anchor='w', height=8, justify='left')
 osszesito_mezo.pack(fill='x', padx=5, pady=5)
 
+
+# Táblázat keret
+tabla_keret = ttk.LabelFrame(ablak, text="Adatok táblázata")
+tabla_keret.pack(fill='both', padx=20, pady=10)
+
+# Táblázat
+tree = ttk.Treeview(tabla_keret, columns=("Név", "Nem", "Szemszín", "Testmagasság", "Testsúly"))
+tree.heading("#0", text="", anchor="center")  # ID oszlop
+tree.column("#0", width=0, anchor="center")  # ID oszlop szélessége
+tree.heading("Név", text="Név")
+tree.column("#1", width=350, anchor="w")
+tree.heading("Nem", text="Nem")
+tree.column("#2", width=70, anchor="w")
+tree.heading("Szemszín", text="Szemszín")
+tree.heading("Testmagasság", text="Testmagasság")
+tree.heading("Testsúly", text="Testsúly")
+style = ttk.Style()
+style.configure("Treeview", rowheight=35)
+tree.pack(fill='both')
+
+
+# Beolvasás gomb
+beolvasas_gomb = tk.Button(ablak, text="Frissít", command=beolvasas)
+beolvasas_gomb.pack(side="right", padx=20, pady=5)
+
 # Összesítés gomb
 osszesites_gomb = tkinter.Button(ablak, text="Összesítés", command=osszesites)
 osszesites_gomb.pack(side="left", padx=20, pady=5)
 
 
+# Mentés gomb - kiegészítve
+mentes_gomb = tk.Button(ablak, text="Mentés", command=adatok_mentese)
+mentes_gomb.pack(side="right", padx=20, pady=5)
 
-# Mentés gomb
-mentes_gomb = tkinter.Button(ablak, text="Adatok mentése", command=adatok_mentese)
-mentes_gomb.pack(fill='x', padx=20, pady=5)
-
+beolvasas()
 ablak.mainloop()
+
