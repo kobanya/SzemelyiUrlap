@@ -1,5 +1,7 @@
 import tkinter
 from tkinter import ttk
+import csv
+
 
 def adatok_mentese():
     nev = nev_bevitel.get()
@@ -9,6 +11,12 @@ def adatok_mentese():
     testsuly = "Nehéz" if testsuly_valtozo.get() else "Könnyű"
 
     osszesito_mezo["text"] = f"Név: {nev}\nNem: {nem}\nSzemszín: {szemszin}\nTestmagasság: {testmagassag}\nTestsúly: {testsuly}"
+
+    adatok = [nev, nem, szemszin, testmagassag, testsuly]
+    with open('adatlap.csv', 'a', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(adatok)
+
 
 ablak = tkinter.Tk()
 ablak.title("Adatbeviteli Űrlap")
