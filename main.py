@@ -27,11 +27,11 @@ def adatok_mentese():
         writer.writerow(adatok)
 
         nev_bevitel.delete(0, tk.END)  # Mező törlése
-        nem_valtozo.set("Férfi")  # Alapértelmezett beállítása
+        nem_valtozo.set("Férfi")   # Alapértelmezett beállítása
         szemszin_valasztobox.set("")  # Alapértelmezett beállítása
         testmagassag_valtozo.set(False)  # Alapértelmezett beállítása
         testsuly_valtozo.set(False)  # Alapértelmezett beállítása
-        osszesito_mezo["text"]=""
+        osszesito_mezo["text"] = ""  # Alaphelyzetbe állítás
 
 
 ablak = tkinter.Tk()
