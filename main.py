@@ -1,5 +1,4 @@
 import tkinter
-import tkinter as tk
 from tkinter import ttk
 import csv
 
@@ -26,7 +25,7 @@ def adatok_mentese():
         writer = csv.writer(csvfile)
         writer.writerow(adatok)
 
-        nev_bevitel.delete(0, tk.END)  # Mező törlése
+        nev_bevitel.delete(0, tkinter.END)  # Mező törlése
         nem_valtozo.set("Férfi")   # Alapértelmezett beállítása
         szemszin_valasztobox.set("")  # Alapértelmezett beállítása
         testmagassag_valtozo.set(False)  # Alapértelmezett beállítása
@@ -79,7 +78,7 @@ osszesito_mezo = tkinter.Label(osszesito_keret, text="", anchor='w', height=8, j
 osszesito_mezo.pack(fill='x', padx=5, pady=5)
 
 # Összesítés gomb
-osszesites_gomb = tk.Button(ablak, text="Összesítés", command=osszesites)
+osszesites_gomb = tkinter.Button(ablak, text="Összesítés", command=osszesites)
 osszesites_gomb.pack(side="left", padx=20, pady=5)
 
 
