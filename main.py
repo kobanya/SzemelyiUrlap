@@ -44,9 +44,29 @@ def beolvasas():
 ablak = tkinter.Tk()
 ablak.title("Adatbeviteli Űrlap")
 
+# Táblázat keret
+tabla_keret = ttk.LabelFrame(ablak, text="Adatok táblázata")
+tabla_keret.pack(fill='both', padx=10, pady=10)
+
+# Táblázat
+tree = ttk.Treeview(tabla_keret, columns=("Név", "Nem", "Szemszín", "Testmagasság", "Testsúly"))
+#tree.heading("#0", text="", anchor="center")  # ID oszlop
+#tree.column("#0", width=0, anchor="center")  # ID oszlop szélessége
+tree["show"] = "headings"
+tree.heading("Név", text="Név")
+tree.column("#1", width=350, anchor="w")
+tree.heading("Nem", text="Nem")
+tree.column("#2", width=70, anchor="w")
+tree.heading("Szemszín", text="Szemszín")
+tree.heading("Testmagasság", text="Testmagasság")
+tree.heading("Testsúly", text="Testsúly")
+style = ttk.Style()
+style.configure("Treeview", rowheight=35)
+tree.pack(fill='both', padx=10, pady=10)
+
 # Név
 nev_keret = tkinter.LabelFrame(ablak, text="Név")
-nev_keret.pack(fill='x', padx=20, pady=5)
+nev_keret.pack(fill='x', padx=20, pady=15)
 nev_bevitel = tkinter.Entry(nev_keret)
 nev_bevitel.pack(fill='x', padx=15, pady=5)
 
@@ -86,25 +106,7 @@ osszesito_mezo = tkinter.Label(osszesito_keret, text="", anchor='w', height=8, j
 osszesito_mezo.pack(fill='x', padx=5, pady=5)
 
 
-# Táblázat keret
-tabla_keret = ttk.LabelFrame(ablak, text="Adatok táblázata")
-tabla_keret.pack(fill='both', padx=10, pady=10)
 
-# Táblázat
-tree = ttk.Treeview(tabla_keret, columns=("Név", "Nem", "Szemszín", "Testmagasság", "Testsúly"))
-#tree.heading("#0", text="", anchor="center")  # ID oszlop
-#tree.column("#0", width=0, anchor="center")  # ID oszlop szélessége
-tree["show"] = "headings"
-tree.heading("Név", text="Név")
-tree.column("#1", width=350, anchor="w")
-tree.heading("Nem", text="Nem")
-tree.column("#2", width=70, anchor="w")
-tree.heading("Szemszín", text="Szemszín")
-tree.heading("Testmagasság", text="Testmagasság")
-tree.heading("Testsúly", text="Testsúly")
-style = ttk.Style()
-style.configure("Treeview", rowheight=35)
-tree.pack(fill='both', padx=10, pady=10)
 
 
 # Beolvasás gomb
