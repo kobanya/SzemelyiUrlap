@@ -14,6 +14,10 @@ def osszesites():
 
 def adatok_mentese():
     nev = nev_bevitel.get()
+    if nev == "":
+        osszesito_mezo.config(text="A név mező nem lehet üres!", fg="red")
+        return
+
     nem = nem_valtozo.get()
     szemszin = szemszin_valasztobox.get()
     testmagassag = "Magas" if testmagassag_valtozo.get() else "Alacsony"
@@ -26,13 +30,12 @@ def adatok_mentese():
         writer = csv.writer(csvfile)
         writer.writerow(adatok)
 
-        nev_bevitel.delete(0, tk.END)  # Mező törlése
-        nem_valtozo.set("Férfi")   # Alapértelmezett beállítása
-        szemszin_valasztobox.set("")  # Alapértelmezett beállítása
-        testmagassag_valtozo.set(False)  # Alapértelmezett beállítása
-        testsuly_valtozo.set(False)  # Alapértelmezett beállítása
-        osszesito_mezo["text"] = ""  # Alaphelyzetbe állítás
-
+    nev_bevitel.delete(0, tk.END)  # Mező törlése
+    nem_valtozo.set("Férfi")   # Alapértelmezett beállítása
+    szemszin_valasztobox.set("")  # Alapértelmezett beállítása
+    testmagassag_valtozo.set(False)  # Alapértelmezett beállítása
+    testsuly_valtozo.set(False)  # Alapértelmezett beállítása
+    osszesito_mezo["text"] = ""  # Alaphelyzetbe állítás
 def beolvasas():
     tree.delete(*tree.get_children())  # Korábbi adatok törlése
 
