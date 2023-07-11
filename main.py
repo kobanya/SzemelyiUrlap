@@ -69,10 +69,11 @@ style.configure("Treeview", rowheight=35)
 tree.pack(fill='both', padx=10, pady=10)
 
 # Név
-nev_keret = tkinter.LabelFrame(ablak, text="Név")
+nev_keret = tk.LabelFrame(ablak, text="Vezeték és keresztnév")
 nev_keret.pack(fill='x', padx=20, pady=15)
-nev_bevitel = tkinter.Entry(nev_keret)
+nev_bevitel = tk.Entry(nev_keret)
 nev_bevitel.pack(fill='x', padx=15, pady=5)
+style.configure("TEntry", font=("Helvetica", 18))  # Betűméret beállítása
 
 # Nem
 nem_keret = tkinter.LabelFrame(ablak, text="Neme")
@@ -89,19 +90,16 @@ szemszin_keret.pack(fill='x', padx=20, pady=5)
 szemszin_valasztobox = ttk.Combobox(szemszin_keret, values=["Barna", "Zöld", "Kék", "Szürke"])
 szemszin_valasztobox.pack(fill='x', padx=5, pady=5)
 
-# Testmagasság
-testmagassag_keret = tkinter.LabelFrame(ablak, text="Testmagasság")
+# Testi adottságok
+testmagassag_keret = tkinter.LabelFrame(ablak, text="Testi adottságok")
 testmagassag_keret.pack(fill='x', padx=20, pady=5)
 testmagassag_valtozo = tkinter.BooleanVar()
 testmagassag_checkbox = tkinter.Checkbutton(testmagassag_keret, text="Magasabb mint 160 cm", variable=testmagassag_valtozo)
+testsuly_valtozo = tkinter.BooleanVar()
+testsuly_checkbox = tkinter.Checkbutton(testmagassag_keret, text="Nehezebb mint 60 kg", variable=testsuly_valtozo)
+testsuly_checkbox.pack(side='left', padx=5, pady=5)
 testmagassag_checkbox.pack(side='left', padx=5, pady=5)
 
-# Testsúly
-testsuly_keret = tkinter.LabelFrame(ablak, text="Testsúly")
-testsuly_keret.pack(fill='x', padx=20, pady=5)
-testsuly_valtozo = tkinter.BooleanVar()
-testsuly_checkbox = tkinter.Checkbutton(testsuly_keret, text="Nehezebb mint 60 kg", variable=testsuly_valtozo)
-testsuly_checkbox.pack(side='left', padx=5, pady=5)
 
 #keret
 osszesito_keret = tkinter.LabelFrame(ablak, text="Adatok összesítése")
